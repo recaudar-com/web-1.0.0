@@ -2,7 +2,7 @@
 
 # Recaudar.com
 
-_Plataforma web _
+Plataforma web.
 
 ## Comenzando 🚀
 
