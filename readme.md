@@ -1,72 +1,121 @@
-<p align="center"><img src="https://laravel.com/assets/img/components/logo-laravel.svg"></p>
+<p align="center">🚀</p>
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/d/total.svg" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/v/stable.svg" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://poser.pugx.org/laravel/framework/license.svg" alt="License"></a>
-</p>
+# Recaudar.com
 
-## About Laravel
+Plataforma web.
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Comenzando 🚀
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+_Crear una copia con Git._
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
+git clone https://github.com/recaudar-com recaudar.com
+```
 
-## Learning Laravel
+Mira **Deployment** para conocer como desplegar el proyecto.
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 1400 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### Pre-requisitos 📋
 
-## Laravel Sponsors
+_Git y un ambiente de desarrollo para laravel, con MacOS puede ser laravel Valet y para Windows Laragon que son sencillos de instalar y para ambas plataformas y tambien Linux pueden usar Homestead_
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+### Instalación 🔧
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[British Software Development](https://www.britishsoftware.co)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- [UserInsights](https://userinsights.com)
-- [Fragrantica](https://www.fragrantica.com)
-- [SOFTonSOFA](https://softonsofa.com/)
-- [User10](https://user10.com)
-- [Soumettre.fr](https://soumettre.fr/)
-- [CodeBrisk](https://codebrisk.com)
-- [1Forge](https://1forge.com)
-- [TECPRESSO](https://tecpresso.co.jp/)
-- [Runtime Converter](http://runtimeconverter.com/)
-- [WebL'Agence](https://weblagence.com/)
-- [Invoice Ninja](https://www.invoiceninja.com)
-- [iMi digital](https://www.imi-digital.de/)
-- [Earthlink](https://www.earthlink.ro/)
-- [Steadfast Collective](https://steadfastcollective.com/)
-- [We Are The Robots Inc.](https://watr.mx/)
-- [Understand.io](https://www.understand.io/)
-- [Abdel Elrafa](https://abdelelrafa.com)
-- [Hyper Host](https://hyper.host)
+_Sigue los siguientes pasos para instalar el proyecto_
 
-## Contributing
+_Ingresa al directorio del proyecto_
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+```
+cd recaudar.com
+```
 
-## Security Vulnerabilities
+_Copia el archivo .env.example y nombralo como .env_
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+```
+cp .env.example .env
+```
 
-## License
+_Edita el archivo .env cambiando los valores por los valores de tu ambiente de desarrollo usar solo un comando segun el editor deseado_
 
-The Laravel framework is open-source software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+```
+nano .env //linux systems
+code .env //Visual Studio Code
+subl .env //Sublime Text
+atom .env //Atom
+```
+
+_Ahora ingresa a la url recaudar.com.test si usas valet o laragon y si usas Homestead la ip virtual del servidor de desarrollo_
+
+## Ejecutando las pruebas ⚙️
+
+_Usaremos PHPUnit para el desarrollo de pruebas de integracion y pruebas unitarias, dentro de la raiz del proyecto._
+
+```
+vendor/bin/phpunit
+```
+
+### Pruebas end-to-end 🔩
+
+_En esta fase del proyecto no estamos usando pruebas end to end pero puedes descargar (Laravel Dusk)[https://laravel.com/docs/5.8/dusk]  para realizar algunas pruebas_
+
+```
+$ composer require laravel/dusk
+```
+
+### Pruebas de estilo de codificación ⌨️
+
+_Para tomar en cuenta los PSR como guia de codificacion tenemos el PSR-2 y PSR-4 puedes descargar php code sniffer para tu editor de texto, (Visual Studio Code)[https://marketplace.visualstudio.com/items?itemName=ikappas.phpcs], (sublime text) [https://packagecontrol.io/packages/Phpcs], (Atom)[https://atom.io/packages/linter-phpcs] y te ayudara a mantener un standard y tambien usar codeblocks segun el estilo de comentarios de los PSR, puedes ver (la guia de colaboracion de Laravel)[https://laravel.com/docs/5.8/contributions#coding-style] para documentacion, ver un ejemplo._
+
+```
+/**
+ * Register a binding with the container.
+ *
+ * @param  string|array  $abstract
+ * @param  \Closure|string|null  $concrete
+ * @param  bool  $shared
+ * @return void
+ * @throws \Exception
+ */
+```
+
+## Deployment 📦
+
+_Recordar que con el deploy es necesario que el commit este en la rama master y usar git para actualizar el servidor._
+
+```
+git fetch --all
+git reset --hard
+```
+
+
+## Construido con 🛠️
+
+_Menciona las herramientas que utilizaste para crear tu proyecto_
+
+* [Laravel](https://laravel.com/docs/5.8) - El framework web usado para el backend
+* [Composer](https://getcomposer.org/) - Manejador de dependencias
+* [Vue](https://vuejs.org/) - El framework web usado para el frontend
+
+## Contribuyendo 🖇️
+
+Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
+
+## Wiki 📖
+
+Puedes encontrar más ddocumentación de este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
+
+## Versionado 📌
+
+Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
+
+## Autores ✒️
+
+_Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios_
+
+* **Ariel Salvador** - *Trabajo Inicial* - [arielsalvador](https://github.com/ArielSalvadorDev)
+
+También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
+
+## Licencia 📄
+
+Este proyecto está bajo la Licencia [MIT license](https://opensource.org/licenses/MIT).
