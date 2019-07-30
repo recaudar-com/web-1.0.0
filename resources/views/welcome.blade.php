@@ -1,4 +1,4 @@
-@extends('layouts.recaudar.landing-page.index-v3')
+@extends('layouts.recaudar.landing-page.index-v4')
 
 @section('content')
 <div class="container">
