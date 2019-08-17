@@ -54,9 +54,6 @@
         </div>
         <!-- #preloader -->
 
-{{-- Temporary video --}}
-<div class="showVideo">
-
 <!-- section -->
 <!-- header version inner menu -->
 <header class="xs-header-height xs-menu-style-transparent xs-menu-style-border fundpress-header-main-version color-navy-blue v3">
@@ -314,6 +311,9 @@
 	</div>
 </div>
 <!-- End modal --><!-- End home section -->
+
+{{-- Temporary video --}}
+<div class="showVideo">
 
 <!-- welcome section -->
 <section class="xs-screen-height xs-welcome-section xs-bg fundpress-welcome-section">
@@ -846,13 +846,14 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    {{-- <script>
+    <script>
         const allPage = document.querySelector('.showVideo')
         allPage.addEventListener('click', showVideo, false)
         function showVideo(){
             Swal.fire({
                 title: 'Suscribete para recibir notificaciones',
                 input: 'text',
+				confirmButtonText: 'Subscribirme',
                 html:
                 '<iframe width="460" height="315" src="https://www.youtube.com/embed/aqz-KE-bpKQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
                 animation: false,
@@ -884,12 +885,12 @@
             }).then((result) => {
                 if (result.value) {
                     Swal.fire({
-                    title: `Thanks for subscribing!!!`,
+                    title: `Gracias por suscribirte!!!`,
                     })
                 }
             })
         }
-    </script> --}}
+    </script>
 
 </body>
 </html>
