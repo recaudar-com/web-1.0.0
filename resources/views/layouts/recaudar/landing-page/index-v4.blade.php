@@ -109,9 +109,50 @@
 					</li>
 				</ul>
 				<div class="xs-navs-button">
+					<!-- Authentication Links -->
 					<ul class="xs-icon-with-text fundpress-icon-menu">
-						<li><a href="" data-toggle="modal" data-target=".bd-example-modal-lg"><i class="fa fa-unlock-alt color-green"></i>Log In</a></li>
-						<li class="d-block d-lg-none d-xl-block"><a href="#" class="xs-btn round-btn green-btn">start a campaign</a></li>
+					@guest
+						<li>
+							<a
+								href="{{ route('login') }}"
+								data-toggle="modal"
+								data-target=".bd-example-modal-lg"
+							>
+								<i class="fa fa-unlock-alt color-green">
+								</i>Log In
+							</a>
+						</li>
+						@if (Route::has('register'))
+							<li 
+								class="d-block d-lg-none d-xl-block">
+								<a 
+									href="{{ route('register') }}"
+									data-toggle="modal"
+									data-target=".register-modal"
+									class="xs-btn round-btn green-btn">start a campaign
+								</a>
+							</li>
+						@endif
+					@else
+
+						<li class="nav-item dropdown">
+							<a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+								{{ Auth::user()->name }} <span class="caret"></span>
+							</a>
+
+							<div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+								<a class="dropdown-item" href="{{ route('logout') }}"
+								onclick="event.preventDefault();
+												document.getElementById('logout-form').submit();">
+									{{ __('Logout') }}
+								</a>
+
+								<form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+									@csrf
+								</form>
+							</div>
+						</li>
+					@endguest
 					</ul>
 				</div>
 			</div><!-- .nav-menus-wrapper END -->
@@ -119,7 +160,6 @@
 	</div>
 </header>
 <!-- header version inner menu closed -->
-
 
 <!-- modal -->
 <div class="modal fade bd-example-modal-lg xs-modal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -142,58 +182,134 @@
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div role="tabpanel" class="tab-pane fadeInRights show fade in active" id="login">
-					<form action="#" method="POST" id="xs-login-form">
+					<form method="POST" action="{{ route('login') }}" >
+						@csrf
+						
+							@error('email')
+							<div class="xs-input-group-v2 alert alert-danger">
+								<span class="text-danger" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+							</div>
+							@enderror
+
+							@error('password')
+							<div class="xs-input-group-v2 alert alert-danger">
+								<span class="text-danger" role="alert">
+									<strong>{{ $message }}</strong>
+								</span>
+							</div>
+							@enderror
+						
 						<div class="xs-input-group-v2">
 							<i class="icon icon-profile-male"></i>
-							<input type="text" name="name" id="xs_user_login_name" class="xs-input-control" placeholder="Enter your username">
+							<input id="email" type="email" 
+								class="form-control @error('email') is-invalid @enderror xs-input-control" 
+								name="email" value="{{ old('email') }}" required autocomplete="email" 
+								autofocus placeholder="Ingresa tu Email">
 						</div>
 						<div class="xs-input-group-v2">
 							<i class="icon icon-key2"></i>
-							<input type="password" name="name" id="xs_login_password" class="xs-input-control" placeholder="Enter your password">
+							<input id="password" type="password" 
+								class="form-control @error('password') is-invalid @enderror xs-input-control" name="password" 
+								required autocomplete="current-password" placeholder="Ingresa tu password">
 						</div>
+						<div class="form-group row">
+                            <div class="col-md-6 offset-md-4">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+
+                                    <label class="form-check-label" for="remember">
+                                        {{ __('Remember Me') }}
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
 						<div class="xs-submit-wraper xs-mb-20">
-							<input type="submit" name="submit" value="login now" id="xs_contact_get_action" class="btn btn-warning btn-block">
+							<input type="submit" name="submit" value="{{ __('Login') }}" id="xs_contact_get_action" class="btn btn-warning btn-block">
 						</div>
-						<p class="xs-mb-20">or</p>
+						@if (Route::has('password.request'))
+							<a class="btn btn-link" href="{{ route('password.request') }}">
+								{{ __('Forgot Your Password?') }}
+							</a>
+						@endif
+						{{-- <p class="xs-mb-20">or</p>
 						<div class="xs-submit-wraper xs-mb-20">
 							<input type="submit" name="submit" value="Login with facebook account" id="xs_facebook" class="btn btn-info btn-block">
 						</div>
 						<div class="xs-submit-wraper">
 							<input type="submit" name="submit" value="Login with twitter account" id="xs_twitter" class="btn btn-success btn-block">
-						</div>
-					</form>
-				</div><!-- tab-pane -->
-				<div role="tabpanel" class="tab-pane fadeInRights fade" id="signup">
-					<form action="#" method="POST" id="xs-register-form">
-						<div class="xs-input-group-v2">
-							<i class="icon icon-profile-male"></i>
-							<input type="text" name="name" id="xs_register_name" class="xs-input-control" placeholder="Enter your username">
-						</div>
-						<div class="xs-input-group-v2">
-							<i class="icon icon-envelope2"></i>
-							<input type="email" name="email" id="xs_register_email" class="xs-input-control" placeholder="Enter your email">
-						</div>
-						<div class="xs-input-group-v2">
-							<i class="icon icon-key2"></i>
-							<input type="password" name="name" id="xs_register_password" class="xs-input-control" placeholder="Enter your password">
-						</div>
-						<div class="xs-input-group-v2">
-							<i class="icon icon-key2"></i>
-							<input type="password" name="name" id="xs_register_repeat_pass" class="xs-input-control" placeholder="Enter your confirm password">
-						</div>
-						<div class="xs-submit-wraper xs-mb-20">
-							<input type="submit" name="submit" value="login now" id="xs_register_get_action" class="btn btn-warning btn-block">
-						</div>
-						<p class="xs-mb-20">or</p>
-						<div class="xs-submit-wraper xs-mb-20">
-							<input type="submit" name="submit" value="Login with facebook account" id="xs_register_facebook" class="btn btn-info btn-block">
-						</div>
-						<div class="xs-submit-wraper">
-							<input type="submit" name="submit" value="Login with twitter account" id="xs_register_twitter" class="btn btn-success btn-block">
-						</div>
+						</div> --}}
 					</form>
 				</div><!-- tab-pane -->
 			</div><!-- tab-content -->
+		</div>
+	</div>
+</div>
+<!-- End modal --><!-- End home section -->
+<!-- modal -->
+<div class="modal fade register-modal xs-modal" tabindex="-1" role="dialog" aria-hidden="true">
+	<div class="modal-dialog modal-lg">
+		<div class="modal-content">
+			<div class="fundpress-tab-nav-v5">
+				<ul class="nav nav-tabs" role="tablist">
+					<li class="nav-item">
+						<a class="nav-link active" href="#signup" role="tab" data-toggle="tab">
+							Signup
+						</a>
+					</li>
+				</ul>
+			</div>
+			<form  method="POST" action="{{ route('register') }}" id="xs-register-form">
+					@csrf
+					@error('name')
+					<div class="xs-input-group-v2 alert alert-danger">
+						<span class="text-danger" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+					</div>
+					@enderror
+					@error('email')
+					<div class="xs-input-group-v2 alert alert-danger">
+						<span class="text-danger" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+					</div>
+					@enderror
+					@error('password')
+					<div class="xs-input-group-v2 alert alert-danger">
+						<span class="text-danger" role="alert">
+							<strong>{{ $message }}</strong>
+						</span>
+					</div>
+					@enderror
+					<div class="xs-input-group-v2">
+						<i class="icon icon-profile-male"></i>
+						<input id="name" type="text" class="form-control xs-input-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="Tu nombre">
+					</div>
+					<div class="xs-input-group-v2">
+						<i class="icon icon-envelope2"></i>
+						<input  id="email" type="email" class="form-control xs-input-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Tu email">
+					</div>
+					<div class="xs-input-group-v2">
+						<i class="icon icon-key2"></i>
+						<input id="password" type="password" class="form-control xs-input-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="Tu password">
+					</div>
+					<div class="xs-input-group-v2">
+						<i class="icon icon-key2"></i>
+						<input id="password-confirm" type="password" class="form-control xs-input-control" name="password_confirmation" required autocomplete="new-password" placeholder="Repite tu password">
+					</div>
+					<div class="xs-submit-wraper xs-mb-20">
+						<input type="submit" name="submit" value="{{ __('Register') }}" id="xs_register_get_action" class="btn btn-warning btn-block">
+					</div>
+					{{-- <p class="xs-mb-20">or</p>
+					<div class="xs-submit-wraper xs-mb-20">
+						<input type="submit" name="submit" value="Login with facebook account" id="xs_register_facebook" class="btn btn-info btn-block">
+					</div>
+					<div class="xs-submit-wraper">
+						<input type="submit" name="submit" value="Login with twitter account" id="xs_register_twitter" class="btn btn-success btn-block">
+					</div> --}}
+				</form>
 		</div>
 	</div>
 </div>
@@ -730,7 +846,7 @@
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@8"></script>
-    <script>
+    {{-- <script>
         const allPage = document.querySelector('.showVideo')
         allPage.addEventListener('click', showVideo, false)
         function showVideo(){
@@ -773,7 +889,7 @@
                 }
             })
         }
-    </script>
+    </script> --}}
 
 </body>
 </html>
