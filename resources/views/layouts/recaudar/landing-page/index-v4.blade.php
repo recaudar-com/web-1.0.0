@@ -120,9 +120,9 @@
 							</a>
 						</li>
 						@if (Route::has('register'))
-							<li 
+							<li
 								class="d-block d-lg-none d-xl-block">
-								<a 
+								<a
 									href="{{ route('register') }}"
 									data-toggle="modal"
 									data-target=".register-modal"
@@ -181,7 +181,7 @@
 				<div role="tabpanel" class="tab-pane fadeInRights show fade in active" id="login">
 					<form method="POST" action="{{ route('login') }}" >
 						@csrf
-						
+
 							@error('email')
 							<div class="xs-input-group-v2 alert alert-danger">
 								<span class="text-danger" role="alert">
@@ -197,18 +197,18 @@
 								</span>
 							</div>
 							@enderror
-						
+
 						<div class="xs-input-group-v2">
 							<i class="icon icon-profile-male"></i>
-							<input id="email" type="email" 
-								class="form-control @error('email') is-invalid @enderror xs-input-control" 
-								name="email" value="{{ old('email') }}" required autocomplete="email" 
+							<input id="email" type="email"
+								class="form-control @error('email') is-invalid @enderror xs-input-control"
+								name="email" value="{{ old('email') }}" required autocomplete="email"
 								autofocus placeholder="Ingresa tu Email">
 						</div>
 						<div class="xs-input-group-v2">
 							<i class="icon icon-key2"></i>
-							<input id="password" type="password" 
-								class="form-control @error('password') is-invalid @enderror xs-input-control" name="password" 
+							<input id="password" type="password"
+								class="form-control @error('password') is-invalid @enderror xs-input-control" name="password"
 								required autocomplete="current-password" placeholder="Ingresa tu password">
 						</div>
 						<div class="form-group row">
@@ -825,6 +825,36 @@
 </footer>
 <!-- End Footer section -->
 
+
+<div class="modal fade xs-modal" id="myModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <h3>Suscribete</h3>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/AfYC0R8hYiE" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            <p class="mt-2 mb-2 text-dark" style="font-size: 18px"> Asiste al evento de lanzamiento </p>
+            <form method="POST" action="{{ route('newsletter') }}">
+                @csrf
+                <input type="email" name="email" id="email" class="form-control" placeholder="Aqui escribe tu email">
+                <input type="submit" value="Suscribete" class="btn btn-primary btn-block mt-3">
+            </form>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade xs-modal" id="infoModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            @if ($message = Session::get('info'))
+                <h1 class="text-center">{{ $message }}</h1>
+            @endif
+        </div>
+    </div>
+</div>
+
+
+
+
+
 </div>
 {{-- end show video --}}
 
@@ -849,48 +879,21 @@
     <script>
         const allPage = document.querySelector('.showVideo')
         allPage.addEventListener('click', showVideo, false)
-        function showVideo(){
-            Swal.fire({
-                title: 'Suscribete para recibir notificaciones',
-                input: 'text',
-				confirmButtonText: 'Subscribirme',
-                html:
-                '<iframe width="460" height="315" src="https://www.youtube.com/embed/aqz-KE-bpKQ" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>',
-                animation: false,
-                customClass: {
-                    popup: 'animated tada'
-                },
-                showLoaderOnConfirm: true,
-                preConfirm: (login) => {
-
-                    // return fetch(`//api.github.com/users/${login}`)
-                    // .then(response => {
-                    //     if (!response.ok) {
-                    //     throw new Error(response.statusText)
-                    //     }
-                    //     return response.json()
-                    // })
-                    // .catch(error => {
-                    //     Swal.showValidationMessage(
-                    //     `Request failed: ${error}`
-                    //     )
-                    // })
-
-
-                    alert(login)
-
-
-                },
-                allowOutsideClick: () => !Swal.isLoading()
-            }).then((result) => {
-                if (result.value) {
-                    Swal.fire({
-                    title: `Gracias por suscribirte!!!`,
-                    })
-                }
-            })
+        function showVideo() {
+            $('#myModal').modal('show')
         }
+
     </script>
+
+@if ($message = Session::get('info'))
+<div class="alert alert-danger alert-block">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <strong>{{ $message }}</strong>
+</div>
+<script>
+    $('#infoModal').modal('show')
+</script>
+@endif
 
 </body>
 </html>
