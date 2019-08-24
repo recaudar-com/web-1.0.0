@@ -15,24 +15,26 @@
 					</a>
 				</div>
 				<ul class="nav-menu">
-					<li><a href="">Home</a>
+					<li><a href="contact.html">Inicio</a></li>
+					{{-- <li><a href="">Inicio</a>
 						<ul class="nav-dropdown">
 							<li><a href="index.html">home version 1</a></li>
 							<li><a href="index-v2.html">home version 2</a></li>
 							<li><a href="index-v3.html">home version 3</a></li>
 						</ul>
-					</li>
-					<li><a href="about.html">about</a></li>
-					<li><a href="#">Blog</a>
+					</li> --}}
+					<li><a href="about.html">Quienes somos</a></li>
+					<li><a href="contact.html">Blog</a></li>
+					{{-- <li><a href="#">Blog</a>
 						<ul class="nav-dropdown">
 							<li><a href="news-feed.html ">blog version 1</a></li>
 							<li><a href="news-feed-v2.html ">blog version 2</a></li>
 							<li><a href="news-feed-v3.html">blog version 3</a></li>
 							<li><a href="blog-single.html">blog details </a></li>
 						</ul>
-					</li>
-					<li><a href="contact.html">contact</a></li>
-					<li><a href="#">pages</a>
+					</li> --}}
+					<li><a href="contact.html">Contacto</a></li>
+					{{-- <li><a href="#">pages</a>
 						<ul class="nav-dropdown">
 							<li><a href="team-member-details.html ">team details</a></li>
 							<li><a href="progress.html ">progress</a></li>
@@ -46,7 +48,7 @@
 							<li><a href="shop.html">Shop</a></li>
 							<li><a href="single-shop.html">single Shop</a></li>
 						</ul>
-					</li>
+					</li> --}}
 				</ul>
 				<div class="xs-navs-button">
 					<!-- Authentication Links -->
@@ -59,7 +61,7 @@
 								data-target=".bd-example-modal-lg"
 							>
 								<i class="fa fa-unlock-alt color-green">
-								</i>Log In
+								</i>Iniciar Sesión
 							</a>
 						</li>
 						@if (Route::has('register'))
@@ -69,7 +71,7 @@
 									href="{{ route('register') }}"
 									data-toggle="modal"
 									data-target=".register-modal"
-									class="xs-btn round-btn green-btn">start a campaign
+									class="xs-btn round-btn green-btn">Crea tu campaña
 								</a>
 							</li>
 						@endif

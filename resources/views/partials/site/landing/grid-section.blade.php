@@ -3,20 +3,32 @@
 	<div class="container">
 		<div class="fundpress-heading-title-v3 text-center wow fadeInUp" data-wow-duration="1s">
 			<div class="fundpress-heading-title-content">
-				<h2>Big of small your <span>cause matters</span></h2>
-				<p>A man of letters. A Platonic dreamer in a dream world. A masochist with <br> an idealized ego that denies reality.</p>
+				<h2>Porque tu causa importa</h2>
+				<p>Nosotros nos encargamos de que todo sea de forma transparente, segura y rápida.</p>
 			</div>
-			<span class="parallax-title" data-scrollax="properties: { translateY: '-250px' }">Features</span>
+			<span class="parallax-title" data-scrollax="properties: { translateY: '-250px' }"></span>
 		</div><!-- section heading -->
 		<div class="row">
-			<div class="col-md-4">
-				<div class="fundpress-icon-with-square-service-v2 wow fadeInUp" data-wow-duration="1.2s">
-					<i class="icon icon-cogwheel-outline xs-check-mark"></i>
-					<h4>Most Money Raised. </h4>
-					<p>The advertising business is not an equal one. Our goal is to change that by highlighting female creatives globally.</p>
-				</div><!-- .fundpress-icon-with-square-service-v2 END -->
-			</div>
-			<div class="col-md-4">
+
+			@include('partials.site.landing.grid', [
+				'title'				=>	 		'Desarrollo',
+				'description'		=>			'Tu haz la campaña, nosotros nos encargamos de que la plataforma reciba los pagos y lo mostramos de forma transparente',
+				'icon'				=>			'icon icon-cogwheel-outline xs-check-mark'
+			]) 
+
+			@include('partials.site.landing.grid', [
+				'title'				=>	 		'Seguridad Garantizada',
+				'description'		=>			'Nuestra plataforma y aliados nos permiten contar con los niveles más altos de seguridad de la industria protegiendo tus datos y los pagos.',
+				'icon'				=>			'icon icon-symbol xs-check-mark'
+			]) 
+
+			@include('partials.site.landing.grid', [
+				'title'				=>	 		'Soporte',
+				'description'		=>			'Si existe algún problema nosotros te notificaremos de inmediato a tu correo para que no exista ningún mal entendido y puedes contactarnos sin problema alguno.',
+				'icon'				=>			'icon icon-support xs-check-mark'
+			])
+
+			{{-- <div class="col-md-4">
 				<div class="fundpress-icon-with-square-service-v2 wow fadeInUp" data-wow-duration="1.4s">
 					<i class="icon icon-symbol xs-check-mark"></i>
 					<h4>Safety Garanted</h4>
@@ -50,7 +62,8 @@
 					<h4>24/7 Online Support</h4>
 					<p>The advertising business is not an equal one. Our goal is to change that by highlighting female creatives globally.</p>
 				</div><!-- .fundpress-icon-with-square-service-v2 END -->
-			</div>
+			</div> --}}
+
 		</div>
 	</div>
 </section>

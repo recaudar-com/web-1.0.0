@@ -3,7 +3,7 @@
     <div class="xs-solid-overlay xs-bg-white"></div>
     <div class="container fundpress-partners-wraper">
         <div class="fundpress-heading-title">
-            <h2 class="color-navy-blue xs-mb-0">Trusted by the biggest nonprofits, companies in the world.</h2>
+            <h2 class="color-navy-blue xs-mb-0">Con la confianza de nuestros Partners Nacionales y Globales.</h2>
         </div><!-- .xs-heading-title .fundpress-heading-title END -->
         <div class="content-center">
             <ul class="fundpress-partners">
