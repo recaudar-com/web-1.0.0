@@ -7,7 +7,7 @@
         </div><!-- .xs-heading-title .fundpress-heading-title END -->
         <div class="content-center">
             <ul class="fundpress-partners">
-                <li><a href="#" class="full-round fundpress-single-partner"><img src="{{ asset('assets/images/partner/1.jpg') }}" alt=""></a></li>
+                {{-- <li><a href="#" class="full-round fundpress-single-partner"><img src="{{ asset('assets/images/partner/1.jpg') }}" alt=""></a></li> --}}
                 <li><a href="#" class="full-round fundpress-single-partner"><img src="{{ asset('assets/images/partner/2.jpg') }}" alt=""></a></li>
                 <li><a href="#" class="full-round fundpress-single-partner"><img src="{{ asset('assets/images/partner/3.jpg') }}" alt=""></a></li>
                 <li><a href="#" class="full-round fundpress-single-partner"><img src="{{ asset('assets/images/partner/4.jpg') }}" alt=""></a></li>
